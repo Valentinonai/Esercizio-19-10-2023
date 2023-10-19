@@ -80,4 +80,13 @@ public class EventoDAO {
     public List<PartitaDiCalcio> getPartitePareggiate() {
         return em.createNamedQuery("get_partite_pareggiate", PartitaDiCalcio.class).getResultList();
     }
+
+    public List<GaraDiAtletica> getGarePerVincitore(Persona p) {
+
+        System.out.println(p.getId());
+        TypedQuery<GaraDiAtletica> lg = em.createNamedQuery("gara_per_nome", GaraDiAtletica.class);
+        lg.setParameter("vincitore", p);
+        return lg.getResultList();
+
+    }
 }

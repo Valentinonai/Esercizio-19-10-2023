@@ -6,6 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "gara_di_atletica")
+@NamedQuery(name = "gara_per_nome", query = "SELECT g FROM GaraDiAtletica g WHERE vincitore=:vincitore")
 public class GaraDiAtletica extends Evento {
     @ManyToMany
     @JoinTable(name = "gara_persona", joinColumns = @JoinColumn(name = "gara_di_atletica"), inverseJoinColumns = @JoinColumn(name = "persone"))

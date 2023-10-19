@@ -22,6 +22,8 @@ public class Persona {
     private Set<GaraDiAtletica> gare_di_atletica;
     @OneToMany(mappedBy = "persona")
     private List<Partecipazione> lista_partecipazioni;
+    @OneToOne(mappedBy = "vincitore")
+    private GaraDiAtletica gara_di_atletica;
 
     public Persona() {
     }
