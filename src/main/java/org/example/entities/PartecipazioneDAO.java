@@ -2,6 +2,8 @@ package org.example.entities;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class PartecipazioneDAO {
 
@@ -45,7 +47,13 @@ public class PartecipazioneDAO {
             System.out.println(e.getMessage());
         }
     }
-    
+
+    public List<Partecipazione> partecipazioneDaConfermarePerEvento(Evento e) {
+        TypedQuery<Partecipazione> q = em.createQuery("SELECT p FROM Partecipazione p WHERE p. ", Partecipazione.class);
+        q.setParameter("id", e.getId());
+        return q.getResultList();
+    }
+
 }
 
 

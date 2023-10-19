@@ -69,7 +69,7 @@ public class Application {
 //        evdao.save(g1);
 
         Concerto concerto = new Concerto("concerto1", LocalDate.now(), "concerto numero 1", TipoEvento.PUBBLICO, 2000, Genere.ROCK, true);
-        evdao.save(concerto);
+//        evdao.save(concerto);
 
 
         List<Concerto> lc = new ArrayList<>(evdao.getConcertiInStreaming());
@@ -85,9 +85,13 @@ public class Application {
         System.out.println("----------------gare per vincitore------------------");
         Persona p = persDao.getById(95);
         evdao.getGarePerVincitore(p).forEach(System.out::println);
-        System.out.println("----------------gare per partecipante------------------");
-        Persona p3 = persDao.getById(88);
-        evdao.garaPerPartecipante(p3).forEach(System.out::println);
+//        System.out.println("----------------gare per partecipante------------------");
+//        Persona p3 = persDao.getById(88);
+//        evdao.garaPerPartecipante(p3).forEach(System.out::println);
+
+//        System.out.println("----------------partecipazione da evento------------------");
+//        Evento e = evdao.getById(119);
+//        partDao.partecipazioneDaConfermarePerEvento(e).forEach(System.out::println);
         em.close();
         JpaUtil.close();
     }
