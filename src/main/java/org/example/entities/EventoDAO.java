@@ -2,6 +2,7 @@ package org.example.entities;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -89,4 +90,13 @@ public class EventoDAO {
         return lg.getResultList();
 
     }
+
+    public List<GaraDiAtletica> garaPerPartecipante(Persona p) {
+
+        Query q = em.createNativeQuery("select vincitore,persone,nome,cognome,persone.id from gara_persona join gara_di_atletica on gara_di_atletica.id=gara_persona.gara_di_atletica join persone on persone.id=gara_persona.persone where persone=:p", GaraDiAtletica.class);
+        q.setParameter("p", p.getId());
+        return q.getResultList();
+    }
+
+
 }

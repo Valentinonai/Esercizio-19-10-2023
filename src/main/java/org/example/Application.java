@@ -58,6 +58,9 @@ public class Application {
         Persona pers2 = new Persona(fkr.name().firstName(), fkr.name().lastName(), fkr.internet().emailAddress(), LocalDate.now(), rnd.nextInt(0, 2) == 0 ? 'M' : 'F');
 //        persDao.save(pers2);
 
+        Partecipazione part = new Partecipazione(pers1, p1);
+        part.setStato(Stato.DA_CONFERMARE);
+//        partDao.save(part);
         Set<Persona> set1 = new HashSet<>(Arrays.asList(pers1, pers2));
 //        System.out.println(set1);
 //        System.out.println(pers2);
@@ -82,6 +85,9 @@ public class Application {
         System.out.println("----------------gare per vincitore------------------");
         Persona p = persDao.getById(95);
         evdao.getGarePerVincitore(p).forEach(System.out::println);
+        System.out.println("----------------gare per partecipante------------------");
+        Persona p3 = persDao.getById(88);
+        evdao.garaPerPartecipante(p3).forEach(System.out::println);
         em.close();
         JpaUtil.close();
     }
