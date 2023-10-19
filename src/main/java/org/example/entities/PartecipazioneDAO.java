@@ -49,8 +49,8 @@ public class PartecipazioneDAO {
     }
 
     public List<Partecipazione> partecipazioneDaConfermarePerEvento(Evento e) {
-        TypedQuery<Partecipazione> q = em.createQuery("SELECT p FROM Partecipazione p WHERE p. ", Partecipazione.class);
-        q.setParameter("id", e.getId());
+        TypedQuery<Partecipazione> q = em.createQuery("SELECT p FROM Partecipazione p WHERE p.stato='DA_CONFERMARE' AND p.evento=:e ", Partecipazione.class);
+        q.setParameter("e", e);
         return q.getResultList();
     }
 

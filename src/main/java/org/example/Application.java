@@ -5,7 +5,10 @@ import org.example.entities.*;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
 public class Application {
 
@@ -72,7 +75,7 @@ public class Application {
 //        evdao.save(concerto);
 
 
-        List<Concerto> lc = new ArrayList<>(evdao.getConcertiInStreaming());
+       /* List<Concerto> lc = new ArrayList<>(evdao.getConcertiInStreaming());
         lc.forEach(System.out::println);
         System.out.println("-------------------------------------");
         evdao.getConcertiPerGenere(Genere.ROCK).forEach(System.out::println);
@@ -84,14 +87,15 @@ public class Application {
         evdao.getPartitePareggiate().forEach(System.out::println);
         System.out.println("----------------gare per vincitore------------------");
         Persona p = persDao.getById(95);
-        evdao.getGarePerVincitore(p).forEach(System.out::println);
+        evdao.getGarePerVincitore(p).forEach(System.out::println);*/
 //        System.out.println("----------------gare per partecipante------------------");
-//        Persona p3 = persDao.getById(88);
+//
+//        Persona p3 = persDao.getById(83);
 //        evdao.garaPerPartecipante(p3).forEach(System.out::println);
 
-//        System.out.println("----------------partecipazione da evento------------------");
-//        Evento e = evdao.getById(119);
-//        partDao.partecipazioneDaConfermarePerEvento(e).forEach(System.out::println);
+        System.out.println("----------------partecipazione da evento------------------");
+        Evento e = evdao.getById(119);
+        partDao.partecipazioneDaConfermarePerEvento(e).forEach(System.out::println);
         em.close();
         JpaUtil.close();
     }

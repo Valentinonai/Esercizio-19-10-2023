@@ -93,9 +93,14 @@ public class EventoDAO {
 
     public List<GaraDiAtletica> garaPerPartecipante(Persona p) {
 
-        Query q = em.createNativeQuery("select vincitore,persone,nome,cognome,persone.id from gara_persona join gara_di_atletica on gara_di_atletica.id=gara_persona.gara_di_atletica join persone on persone.id=gara_persona.persone where persone=:p", GaraDiAtletica.class);
+        Query q = em.createNativeQuery("select* from gara_persona join gara_di_atletica on gara_di_atletica.id=gara_persona.gara_di_atletica join persone on persone.id=gara_persona.persone where persone=:p", GaraDiAtletica.class);
         q.setParameter("p", p.getId());
         return q.getResultList();
+//        System.out.println(p.getId());
+//        TypedQuery<GaraDiAtletica> q = em.createQuery("SELECT c FROM GaraDiAtletica c WHERE c.atleti.contains(:p)", GaraDiAtletica.class);
+//
+//        q.setParameter("p", p);
+
     }
 
 
