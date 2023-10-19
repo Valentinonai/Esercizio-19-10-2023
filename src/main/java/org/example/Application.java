@@ -50,7 +50,7 @@ public class Application {
 
         PartitaDiCalcio p1 = new PartitaDiCalcio("partita1", LocalDate.now(), "partita numero 1", TipoEvento.PUBBLICO, 2, "squadra1", "squadra2", "squadra2", 1, 4);
 //        evdao.save(p1);
-        PartitaDiCalcio p2 = new PartitaDiCalcio("partita2", LocalDate.now(), "partita numero 2", TipoEvento.PUBBLICO, 2, "squadra3", "squadra4", "squadra3", 3, 0);
+        PartitaDiCalcio p2 = new PartitaDiCalcio("partita2", LocalDate.now(), "partita numero 2", TipoEvento.PUBBLICO, 2, "squadra3", "squadra4", null, 3, 0);
 //        evdao.save(p2);
 
         Persona pers1 = new Persona(fkr.name().firstName(), fkr.name().lastName(), fkr.internet().emailAddress(), LocalDate.now(), rnd.nextInt(0, 2) == 0 ? 'M' : 'F');
@@ -77,6 +77,8 @@ public class Application {
         evdao.getPartiteVinteInCasa().forEach(System.out::println);
         System.out.println("----------------partite vinte in trasferta------------------");
         evdao.getPartiteVinteInTrasferta().forEach(System.out::println);
+        System.out.println("----------------partite pareggiate------------------");
+        evdao.getPartitePareggiate().forEach(System.out::println);
         em.close();
         JpaUtil.close();
     }

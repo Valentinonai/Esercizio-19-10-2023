@@ -76,4 +76,8 @@ public class EventoDAO {
     public List<PartitaDiCalcio> getPartiteVinteInTrasferta() {
         return em.createNamedQuery("get_partite_vinte_in_trasferta", PartitaDiCalcio.class).getResultList();
     }
+
+    public List<PartitaDiCalcio> getPartitePareggiate() {
+        return em.createNamedQuery("get_partite_pareggiate", PartitaDiCalcio.class).getResultList();
+    }
 }

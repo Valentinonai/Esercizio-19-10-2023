@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Entity
 @NamedQuery(name = "get_partite_vinte_in_casa", query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadra_di_casa=p.squadra_vincente")
 @NamedQuery(name = "get_partite_vinte_in_trasferta", query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadra_ospite=p.squadra_vincente")
+@NamedQuery(name = "get_partite_pareggiate", query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadra_vincente=null")
 public class PartitaDiCalcio extends Evento {
 
     @Column(nullable = false)
