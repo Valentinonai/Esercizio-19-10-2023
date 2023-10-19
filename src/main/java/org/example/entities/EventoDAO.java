@@ -91,10 +91,7 @@ public class EventoDAO {
     }
 
     public List<GaraDiAtletica> garaPerPartecipante(Persona p) {
-
-       /* Query q = em.createNativeQuery("SELECT * FROM gara_di_atletica JOIN gara_persona ON gara_di_atletica.id=gara_persona.gara_di_atletica Join persone ON gara_persona.persone=persone.id WHERE gara_persona.persone=:p", GaraDiAtletica.class);
-        q.setParameter("p", p);
-        return q.getResultList();*/
+        
         System.out.println(p.getId());
         TypedQuery<GaraDiAtletica> q = em.createQuery("SELECT c FROM GaraDiAtletica c  WHERE :p MEMBER OF c.atleti ", GaraDiAtletica.class);
 
