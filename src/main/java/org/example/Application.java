@@ -87,15 +87,18 @@ public class Application {
         evdao.getPartitePareggiate().forEach(System.out::println);
         System.out.println("----------------gare per vincitore------------------");
         Persona p = persDao.getById(95);
-        evdao.getGarePerVincitore(p).forEach(System.out::println);*/
+        evdao.getGarePerVincitore(p).forEach(System.out::println);
         System.out.println("----------------gare per partecipante------------------");
 
         Persona p3 = persDao.getById(95);
         evdao.garaPerPartecipante(p3).forEach(System.out::println);
 
-     /*   System.out.println("----------------partecipazione da evento------------------");
+       System.out.println("----------------partecipazione da evento------------------");
         Evento e = evdao.getById(119);
         partDao.partecipazioneDaConfermarePerEvento(e).forEach(System.out::println);*/
+        System.out.println("----------------Eventi SOLD OUT------------------");
+
+        evdao.getEventiSoldOut().forEach(System.out::println);
         em.close();
         JpaUtil.close();
     }

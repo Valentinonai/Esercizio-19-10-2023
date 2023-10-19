@@ -2,6 +2,7 @@ package org.example.entities;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -91,7 +92,7 @@ public class EventoDAO {
     }
 
     public List<GaraDiAtletica> garaPerPartecipante(Persona p) {
-        
+
         System.out.println(p.getId());
         TypedQuery<GaraDiAtletica> q = em.createQuery("SELECT c FROM GaraDiAtletica c  WHERE :p MEMBER OF c.atleti ", GaraDiAtletica.class);
 
@@ -99,5 +100,10 @@ public class EventoDAO {
         return q.getResultList();
     }
 
+
+    public List getEventiSoldOut() {
+        Query q = em.createNativeQuery("SELECT eventi.id FROM eventi JOIN partecipazioni ON eventi.id=partecipazioni.evento_id GROUP BY eventi.id HAVING COUNT(*)>=eventi.numeromassimopartecipanti");
+        return q.getResultList();
+    }
 
 }
