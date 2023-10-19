@@ -5,8 +5,9 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "eventi")
-public class Evento {
+public abstract class Evento {
     @Id
     @GeneratedValue
     private long id;
@@ -105,7 +106,6 @@ public class Evento {
                 ", descrizione='" + descrizione + '\'' +
                 ", tipoEvento=" + tipoEvento +
                 ", numeroMassimoPartecipanti=" + numeroMassimoPartecipanti +
-//                ", lista_partecipazioni=" + lista_partecipazioni +
                 ", location=" + location +
                 '}';
     }

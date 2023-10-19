@@ -3,6 +3,7 @@ package org.example.entities;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "persone")
@@ -16,8 +17,9 @@ public class Persona {
     private String email;
     private LocalDate data_di_nascita;
     private char sesso;
-
-
+    @ManyToMany
+    @JoinTable(name = "gara_persona", joinColumns = @JoinColumn(name = "persone"), inverseJoinColumns = @JoinColumn(name = "gara_di_atletica"))
+    private Set<GaraDiAtletica> gare_di_atletica;
     @OneToMany(mappedBy = "persona")
     private List<Partecipazione> lista_partecipazioni;
 
@@ -30,6 +32,14 @@ public class Persona {
         this.email = email;
         this.data_di_nascita = data_di_nascita;
         this.sesso = sesso;
+    }
+
+    public Set<GaraDiAtletica> getGare_di_atletica() {
+        return gare_di_atletica;
+    }
+
+    public void setGare_di_atletica(Set<GaraDiAtletica> gare_di_atletica) {
+        this.gare_di_atletica = gare_di_atletica;
     }
 
     public long getId() {
