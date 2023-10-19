@@ -68,4 +68,12 @@ public class EventoDAO {
         list.setParameter("g", g);
         return list.getResultList();
     }
+
+    public List<PartitaDiCalcio> getPartiteVinteInCasa() {
+        return em.createNamedQuery("get_partite_vinte_in_casa", PartitaDiCalcio.class).getResultList();
+    }
+
+    public List<PartitaDiCalcio> getPartiteVinteInTrasferta() {
+        return em.createNamedQuery("get_partite_vinte_in_trasferta", PartitaDiCalcio.class).getResultList();
+    }
 }

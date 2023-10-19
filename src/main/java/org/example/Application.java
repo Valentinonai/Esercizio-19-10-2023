@@ -73,6 +73,10 @@ public class Application {
         lc.forEach(System.out::println);
         System.out.println("-------------------------------------");
         evdao.getConcertiPerGenere(Genere.ROCK).forEach(System.out::println);
+        System.out.println("----------------partite vinte in casa------------------");
+        evdao.getPartiteVinteInCasa().forEach(System.out::println);
+        System.out.println("----------------partite vinte in trasferta------------------");
+        evdao.getPartiteVinteInTrasferta().forEach(System.out::println);
         em.close();
         JpaUtil.close();
     }

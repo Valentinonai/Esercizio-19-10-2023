@@ -2,9 +2,12 @@ package org.example.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import java.time.LocalDate;
 
 @Entity
+@NamedQuery(name = "get_partite_vinte_in_casa", query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadra_di_casa=p.squadra_vincente")
+@NamedQuery(name = "get_partite_vinte_in_trasferta", query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadra_ospite=p.squadra_vincente")
 public class PartitaDiCalcio extends Evento {
 
     @Column(nullable = false)
@@ -73,7 +76,7 @@ public class PartitaDiCalcio extends Evento {
     @Override
     public String toString() {
         return "PartitaDiCalcio{" +
-               
+
                 ", squadra_di_casa='" + squadra_di_casa + '\'' +
                 ", squadra_ospite='" + squadra_ospite + '\'' +
                 ", squadra_vincente='" + squadra_vincente + '\'' +
