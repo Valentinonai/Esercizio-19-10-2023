@@ -5,10 +5,7 @@ import org.example.entities.*;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class Application {
 
@@ -52,25 +49,30 @@ public class Application {
 
 
         PartitaDiCalcio p1 = new PartitaDiCalcio("partita1", LocalDate.now(), "partita numero 1", TipoEvento.PUBBLICO, 2, "squadra1", "squadra2", "squadra2", 1, 4);
-        evdao.save(p1);
+//        evdao.save(p1);
         PartitaDiCalcio p2 = new PartitaDiCalcio("partita2", LocalDate.now(), "partita numero 2", TipoEvento.PUBBLICO, 2, "squadra3", "squadra4", "squadra3", 3, 0);
-        evdao.save(p2);
+//        evdao.save(p2);
 
         Persona pers1 = new Persona(fkr.name().firstName(), fkr.name().lastName(), fkr.internet().emailAddress(), LocalDate.now(), rnd.nextInt(0, 2) == 0 ? 'M' : 'F');
-        persDao.save(pers1);
+//        persDao.save(pers1);
         Persona pers2 = new Persona(fkr.name().firstName(), fkr.name().lastName(), fkr.internet().emailAddress(), LocalDate.now(), rnd.nextInt(0, 2) == 0 ? 'M' : 'F');
-        persDao.save(pers2);
-        em.refresh(pers2);
-        em.refresh(pers1);
-        Set<Persona> set1 = new HashSet<>(Arrays.asList(pers1, pers2));
-        System.out.println(set1);
-        System.out.println(pers2);
-        GaraDiAtletica g1 = new GaraDiAtletica("Gara 1", LocalDate.now(), "Gara di atletica 1", TipoEvento.PRIVATO, 47, set1, pers2);
-        System.out.println(g1);
-        evdao.save(g1);
+//        persDao.save(pers2);
 
-        Concerto concerto = new Concerto("concerto1", LocalDate.now(), "concerto numero 1", TipoEvento.PUBBLICO, 2000, Genere.ROCK, false);
-        evdao.save(concerto);
+        Set<Persona> set1 = new HashSet<>(Arrays.asList(pers1, pers2));
+//        System.out.println(set1);
+//        System.out.println(pers2);
+        GaraDiAtletica g1 = new GaraDiAtletica("Gara 1", LocalDate.now(), "Gara di atletica 1", TipoEvento.PRIVATO, 47, set1, pers2);
+//        System.out.println(g1);
+//        evdao.save(g1);
+
+        Concerto concerto = new Concerto("concerto1", LocalDate.now(), "concerto numero 1", TipoEvento.PUBBLICO, 2000, Genere.ROCK, true);
+//        evdao.save(concerto);
+
+
+        List<Concerto> lc = new ArrayList<>(evdao.getConcertiInStreaming());
+        lc.forEach(System.out::println);
+        System.out.println("-------------------------------------");
+        evdao.getConcertiPerGenere(Genere.ROCK).forEach(System.out::println);
         em.close();
         JpaUtil.close();
     }

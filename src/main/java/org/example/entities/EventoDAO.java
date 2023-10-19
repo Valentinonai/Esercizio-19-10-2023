@@ -2,6 +2,8 @@ package org.example.entities;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class EventoDAO {
 
@@ -53,5 +55,17 @@ public class EventoDAO {
         em.refresh(found);
         System.out.println(found);
 
+    }
+
+
+    public List<Concerto> getConcertiInStreaming() {
+        List<Concerto> list = em.createNamedQuery("get_conceerti_in_streaming", Concerto.class).getResultList();
+        return list;
+    }
+
+    public List<Concerto> getConcertiPerGenere(Genere g) {
+        TypedQuery<Concerto> list = em.createQuery("SELECT c FROM Concerto c WHERE c.genere=:g", Concerto.class);
+        list.setParameter("g", g);
+        return list.getResultList();
     }
 }

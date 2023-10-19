@@ -1,12 +1,10 @@
 package org.example.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@NamedQuery(name = "get_conceerti_in_streaming", query = "SELECT c FROM Concerto c WHERE c.in_streaming=true")
 public class Concerto extends Evento {
 
 
@@ -45,7 +43,7 @@ public class Concerto extends Evento {
     @Override
     public String toString() {
         return "Concerto{" +
-
+                "id=" + getId() +
                 ", genere=" + genere +
                 ", in_streaming=" + in_streaming +
                 '}';
